@@ -1,0 +1,440 @@
+[
+  {
+    "Name": "First Superhero Networking Event",
+    "Id": "7bed2bb6-647f-43b1-a68d-05d4bda39ebc",
+    "StartUtc": "2020-11-16T17:00:00.000Z",
+    "NumberOfTimeslots": 4,
+    "MeetingDuration": 45,
+    "Timezone": "America/Los_Angeles",
+    "Meetings": [],
+    "Heroes": [
+      {
+        "Id": 68,
+        "Name": "Batman",
+        "Side": "Hero"
+      },
+      {
+        "Id": 98,
+        "Name": "Black Cat",
+        "Side": "Hero",
+        "Preferences": [
+          {
+            "HeroId": 68,
+            "Rank": 1
+          }
+        ]
+      },
+      {
+        "Id": 105,
+        "Name": "Black Panther",
+        "Side": "Hero",
+        "Preferences": [
+          {
+            "HeroId": 563,
+            "Rank": 1
+          },
+          {
+            "HeroId": 175,
+            "Rank": 2
+          },
+          {
+            "HeroId": 98,
+            "Rank": 3
+          }
+        ]
+      },
+      {
+        "Id": 155,
+        "Name": "Captain Marvel",
+        "Side": "Hero",
+        "Preferences": [
+          {
+            "HeroId": 646,
+            "Rank": 1
+          },
+          {
+            "HeroId": 657,
+            "Rank": 2
+          },
+          {
+            "HeroId": 98,
+            "Rank": 3
+          },
+          {
+            "HeroId": 661,
+            "Rank": 4
+          }
+        ]
+      },
+      {
+        "Id": 175,
+        "Name": "Chuck Norris",
+        "Side": "Hero",
+        "Preferences": [
+          {
+            "HeroId": 98,
+            "Rank": 1
+          }
+        ]
+      },
+      {
+        "Id": 207,
+        "Name": "Darth Vader",
+        "Side": "Villain",
+        "Preferences": [
+          {
+            "HeroId": 418,
+            "Rank": 1
+          },
+          {
+            "HeroId": 369,
+            "Rank": 2
+          },
+          {
+            "HeroId": 105,
+            "Rank": 3
+          },
+          {
+            "HeroId": 572,
+            "Rank": 4
+          }
+        ]
+      },
+      {
+        "Id": 225,
+        "Name": "Doctor Strange",
+        "Side": "Hero",
+        "Preferences": [
+          {
+            "HeroId": 175,
+            "Rank": 1
+          }
+        ]
+      },
+      {
+        "Id": 332,
+        "Name": "Human Torch",
+        "Side": "Hero",
+        "Preferences": [
+          {
+            "HeroId": 175,
+            "Rank": 1
+          },
+          {
+            "HeroId": 563,
+            "Rank": 2
+          }
+        ]
+      },
+      {
+        "Id": 345,
+        "Name": "Iron Man",
+        "Side": "Hero",
+        "Preferences": [
+          {
+            "HeroId": 423,
+            "Rank": 1
+          },
+          {
+            "HeroId": 68,
+            "Rank": 2
+          }
+        ]
+      },
+      {
+        "Id": 369,
+        "Name": "Joker",
+        "Side": "Villain",
+        "Preferences": [
+          {
+            "HeroId": 563,
+            "Rank": 1
+          },
+          {
+            "HeroId": 175,
+            "Rank": 2
+          },
+          {
+            "HeroId": 423,
+            "Rank": 3
+          }
+        ]
+      },
+      {
+        "Id": 418,
+        "Name": "Luke Skywalker",
+        "Side": "Hero",
+        "Preferences": [
+          {
+            "HeroId": 207,
+            "Rank": 1
+          },
+          {
+            "HeroId": 98,
+            "Rank": 2
+          }
+        ]
+      },
+      {
+        "Id": 423,
+        "Name": "Magneto",
+        "Side": "Villain",
+        "Preferences": [
+          {
+            "HeroId": 369,
+            "Rank": 1
+          },
+          {
+            "HeroId": 98,
+            "Rank": 2
+          },
+          {
+            "HeroId": 175,
+            "Rank": 3
+          }
+        ]
+      },
+      {
+        "Id": 528,
+        "Name": "Professor X",
+        "Side": "Hero",
+        "Preferences": [
+          {
+            "HeroId": 563,
+            "Rank": 1
+          }
+        ]
+      },
+      {
+        "Id": 563,
+        "Name": "Robin",
+        "Side": "Hero",
+        "Preferences": [
+          {
+            "HeroId": 175,
+            "Rank": 1
+          },
+          {
+            "HeroId": 105,
+            "Rank": 2
+          }
+        ]
+      },
+      {
+        "Id": 572,
+        "Name": "Sabretooth",
+        "Side": "Villain",
+        "Preferences": [
+          {
+            "HeroId": 369,
+            "Rank": 1
+          },
+          {
+            "HeroId": 719,
+            "Rank": 2
+          }
+        ]
+      },
+      {
+        "Id": 622,
+        "Name": "Spider-Man",
+        "Side": "Hero",
+        "Preferences": [
+          {
+            "HeroId": 661,
+            "Rank": 1
+          },
+          {
+            "HeroId": 175,
+            "Rank": 2
+          },
+          {
+            "HeroId": 572,
+            "Rank": 3
+          },
+          {
+            "HeroId": 719,
+            "Rank": 4
+          }
+        ]
+      },
+      {
+        "Id": 646,
+        "Name": "Superman",
+        "Side": "Hero"
+      },
+      {
+        "Id": 657,
+        "Name": "Thanos",
+        "Side": "Villain",
+        "Preferences": [
+          {
+            "HeroId": 423,
+            "Rank": 1
+          },
+          {
+            "HeroId": 661,
+            "Rank": 2
+          }
+        ]
+      },
+      {
+        "Id": 661,
+        "Name": "Thor",
+        "Side": "Hero",
+        "Preferences": [
+          {
+            "HeroId": 175,
+            "Rank": 1
+          },
+          {
+            "HeroId": 719,
+            "Rank": 2
+          },
+          {
+            "HeroId": 68,
+            "Rank": 3
+          }
+        ]
+      },
+      {
+        "Id": 719,
+        "Name": "Wolverine",
+        "Side": "Hero",
+        "Preferences": [
+          {
+            "HeroId": 105,
+            "Rank": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Name": "Second Superhero Networking Event <script>alert('Fix me without changing the raw data (Events.json)')</script>",
+    "Id": "Sample-Event",
+    "StartUtc": "2020-11-23T17:00:00.000Z",
+    "NumberOfTimeslots": 2,
+    "MeetingDuration": 45,
+    "Timezone": "America/Los_Angeles",
+    "Meetings": [
+      {
+        "Id": "Meeting1",
+        "Start": "2020-11-23T17:00:00.000Z",
+        "End": "2020-11-23T17:45:00.000Z",
+        "TableNumber": 1,
+        "HeroId1": "1",
+        "HeroId2": "2"
+      },
+      {
+        "Id": "Meeting2",
+        "Start": "2020-11-23T17:00:00.000Z",
+        "End": "2020-11-23T17:45:00.000Z",
+        "TableNumber": 2,
+        "HeroId1": "3",
+        "HeroId2": "4"
+      },
+      {
+        "Id": "Meeting3",
+        "Start": "2020-11-23T17:00:00.000Z",
+        "End": "2020-11-23T17:45:00.000Z",
+        "TableNumber": 3,
+        "HeroId1": "5",
+        "HeroId2": "6"
+      },
+      {
+        "Id": "Meeting4",
+        "Start": "2020-11-23T17:45:00.000Z",
+        "End": "2020-11-23T18:30:00.000Z",
+        "TableNumber": 1,
+        "HeroId1": "1",
+        "HeroId2": "3"
+      },
+      {
+        "Id": "Meeting5",
+        "Start": "2020-11-23T17:45:00.000Z",
+        "End": "2020-11-23T18:30:00.000Z",
+        "TableNumber": 2,
+        "HeroId1": "2",
+        "HeroId2": "6"
+      },
+      {
+        "Id": "Meeting6",
+        "Start": "2020-11-23T17:45:00.000Z",
+        "End": "2020-11-23T18:30:00.000Z",
+        "TableNumber": 2,
+        "HeroId1": "4",
+        "HeroId2": "5"
+      }
+    ],
+    "Heroes": [
+      {
+        "Id": "1",
+        "Name": "Batman <script>alert('Fix me too')</script>",
+        "Side": "Hero",
+        "Preferences": [
+          {
+            "HeroId": 2,
+            "Rank": 1
+          },
+          {
+            "HeroId": 6,
+            "Rank": 2
+          },
+          {
+            "HeroId": 3,
+            "Rank": 3
+          }
+        ]
+      },
+      {
+        "Id": "2",
+        "Name": "Superman",
+        "Side": "Hero",
+        "Preferences": [
+          {
+            "HeroId": 6,
+            "Rank": 1
+          },
+          {
+            "HeroId": 3,
+            "Rank": 2
+          },
+          {
+            "HeroId": 4,
+            "Rank": 3
+          }
+        ]
+      },
+      {
+        "Id": "3",
+        "Name": "Ironman",
+        "Side": "Hero",
+        "Preferences": []
+      },
+      {
+        "Id": "4",
+        "Name": "Thor",
+        "Side": "Hero",
+        "Preferences": []
+      },
+      {
+        "Id": "5",
+        "Name": "The Hulk",
+        "Side": "Hero",
+        "Preferences": []
+      },
+      {
+        "Id": "6",
+        "Name": "Smoke Diggity",
+        "Side": "Villain",
+        "Preferences": [
+          {
+            "HeroId": 2,
+            "Rank": 1
+          }
+        ]
+      }
+    ]
+  }
+]

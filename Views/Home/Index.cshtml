@@ -1,0 +1,168 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div id="event-container" style="margin-bottom:15px;">
+    <h4 class="event-name">Event Name</h4>
+    <span class="event-date"></span> • <span class="event-hero-count"></span> • <span class="event-timeslot-count"></span>
+</div>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="heroes-tab" data-toggle="tab" href="#heroes" role="tab" aria-controls="home" aria-selected="true">Heroes</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="meetings-tab" data-toggle="tab" href="#meetings" role="tab" aria-controls="meetings" aria-selected="false">Meetings</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="heroes" role="tabpanel" aria-labelledby="heroes-tab">
+        <div style="margin-bottom: 6px;" class="clearfix">
+            <button class="btn btn-light btn-sm pull-right" type="button" id="add-hero">
+                <i class="fa fa-user-plus"></i> Add Hero
+            </button>
+        </div>
+
+        <table class="" id="table-heroes">
+        </table>
+    </div>
+    <div class="tab-pane fade" id="meetings" role="tabpanel" aria-labelledby="meetings-tab">
+        <div class="jumbotron" id="no-meetings-container">
+            <h1 class="display-4">No Meetings Created!</h1>
+            <p class="lead">Are you ready to generate your meetings?  </p>
+            <hr class="my-4">
+            <p>Before you do so, make sure you have an even number of heroes!</p>
+            <p class="lead">
+                <button class="btn btn-primary btn-lg" type="button" id="match-heroes">
+                    Create Meetings
+                </button>
+            </p>
+        </div>
+        <table class="table table-bordered table-sm sh-table" id="table-matches" style="display:none">
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Participant 1</th>
+                    <th>Participant 2</th>
+                    <th>Table #</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4">
+                        <div style="padding:15px 15px;">
+                            Add code to populate table (BONUS)
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
+</div>
+
+
+<div class="modal fade" id="hero-form">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Hero Form</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Add code to create/update hero & preferences</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div> 
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function() {
+            var url = '@Url.Action("Get", "Events")';
+            var id = '@Model';
+
+            function getEvent(eventId) {
+                var query = {
+                    url: url,
+                    cache: true,
+                    async: true,
+                    type: 'GET',
+                    parameters: { id: eventId },
+                    callback: function (event) {
+                        showEvent(event);
+                    }
+                }
+                Sh.Ajax.execute(query);
+            }
+
+            getEvent(id); 
+             
+            function showEvent(event) {
+                showEventDetails(event);
+                showEventHeroes(event);
+                showEventMeetings(event);
+            }
+            function showEventMeetings(event) {
+                if (!event.meetings || event.meetings.length === 0) {
+                    $('#no-meetings-container').show();
+                    $('#table-matches').hide();
+                } else {
+                    $('#no-meetings-container').hide();
+                    $('#table-matches').show();
+
+                    // INSERT CODE TO SHOW MEETINGS
+                }
+            }
+            function showEventDetails(event) {  
+                var $eventContainer = $('#event-container');
+                $eventContainer.find('.event-name').html(event.name);
+                $eventContainer.find('.event-hero-count').html(event.heroes.length + ' heroes');
+                $eventContainer.find('.event-timeslot-count').html(event.numberOfTimeslots + ' timeslots');
+
+                var date = new Date(event.startUtc);
+                $eventContainer.find('.event-date').html(date.toDateString() + ' [Time] [Windows Abbreviated Timezone]');
+            }
+            function showEventHeroes(event) {
+                var options = {
+                    people: event.heroes
+                };
+                var heroTable = $('#table-heroes').heroTable(options)
+                    .bind('herotable:deleted', function (e, hero) {
+
+                    })
+                    .bind('herotable:edit', function (e, hero) {
+                        showHeroForm(hero);
+                    });
+            }
+            function showHeroForm(hero) {
+                $('#hero-form').modal({ backdrop: 'static' });
+                if (hero) {
+                    $('#hero-form').find('.modal-title').html('Edit Hero Registration: ' + hero.name);
+                } else {
+                    $('#hero-form').find('.modal-title').html('Add Hero');
+                }
+            }
+
+            // bind events
+            $('#add-hero').click(function () {
+                showHeroForm();
+            });
+            $('#match-heroes').click(function () {
+                createMeetings(function (event) {
+                    showEventMeetings(event);
+                });
+            });
+
+            function createMeetings(callback) {
+                alert("Add code to create meetings based of a hero's preferences...");
+                // add code to create meetings
+                // trigger callback to populate meetings onto the form
+                // callback(updatedEvent);
+            }
+        });
+    </script>
+}
