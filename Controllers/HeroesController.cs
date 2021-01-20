@@ -14,7 +14,8 @@
         public ActionResult Save(EventModel model)
         {
             // INSERT CODE TO SAVE
-            throw new NotImplementedException();
+            // model.Heroes.Add();
+             throw new NotImplementedException();
         }
 
         [HttpDelete]

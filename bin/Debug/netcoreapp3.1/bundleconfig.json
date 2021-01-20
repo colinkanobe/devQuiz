@@ -1,0 +1,50 @@
+[
+  {
+    "outputFileName": "wwwroot/css/core.min.css",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+      "wwwroot/lib/jqueryui/jquery-ui.min.css",
+      "wwwroot/lib/font-awesome/css/font-awesome.min.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/core.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/dist/jquery.min.js",
+      "wwwroot/lib/jqueryui/jquery-ui.min.js",
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    "inputFiles": [
+      "wwwroot/css/site.css",
+      "wwwroot/css/superhero.ui.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/lib/superhero/utilities/sh.ajax.js",
+      "wwwroot/lib/superhero/components/sh.component.js",
+      "wwwroot/lib/superhero/components/sh.hero.table.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "U5EE7MdLCKA5MmLM8om55GDhPvyw57iAQLuHWHsoHj/Yy1xxHJ/plwvjwVuSKjEUG76Nuy9DWPRAPWm6B6PfQg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\colin\\source\\repos\\devQuiz\\SuperHeroSpeedNetworking.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\colin\\.nuget\\packages\\buildbundlerminifier\\3.2.449\\buildbundlerminifier.3.2.449.nupkg.sha512",
+    "C:\\Users\\colin\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

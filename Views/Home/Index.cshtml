@@ -57,7 +57,7 @@
                 </tr>
             </tbody>
         </table>
-    </div> 
+    </div>
 </div>
 
 
@@ -70,16 +70,59 @@
             </div>
             <div class="modal-body">
                 <p>Add code to create/update hero & preferences</p>
+                <form role="form" id="frmhro">
+                    <div class="form-group">
+                        <label for="usr"><span class="glyphicon glyphicon-user"></span> User</label>
+                        <input type="text" class="form-control" id="usr" placeholder="Add new User" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="side"><span class="glyphicon glyphicon-eye-open"></span> Side</label>
+                        <select name="drpside" id="drpside" placeholder="Select Side" required>
+                            <option value="">Choose...</option>
+                            <option value="Hero">Hero</option>
+                            <option value="Villian">Villian</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="side"><span class="glyphicon glyphicon-eye-open"></span> Preferences</label>
+                        <div>
+                            <table id="tblPrefs" cellpadding="0" cellspacing="0" border="1">
+                                <thead>
+                                    <tr>
+                                        <th class="glyphicon glyphicon-user">Hero Id</th>
+                                        <th class="glyphicon glyphicon-user">Rank</th>
+                                        <th class="glyphicon glyphicon-user"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td><input  class="form-control" type="text" id="heroid" placeholder="Add Hero Id" required /></td>
+                                        <td><input  class="form-control" type="number" id="rnk" placeholder="Add Rank" min="1" max="5" required /></td>
+                                        <td><input  class="btn btn-primary btn-lg" id="addheroBtn" type="button" value="Add" /></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" id="submitBtn">Save</button>
+                    </div>
+                </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save</button>
-            </div>
-        </div> 
+
+        </div>
     </div>
 </div>
 
 @section Scripts
 {
+
+
+    @*
+         <partial name="_ValidationScriptsPartial" />
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script> *@
     <script type="text/javascript">
         $(function() {
             var url = '@Url.Action("Get", "Events")';
@@ -99,8 +142,8 @@
                 Sh.Ajax.execute(query);
             }
 
-            getEvent(id); 
-             
+            getEvent(id);
+
             function showEvent(event) {
                 showEventDetails(event);
                 showEventHeroes(event);
@@ -117,26 +160,47 @@
                     // INSERT CODE TO SHOW MEETINGS
                 }
             }
-            function showEventDetails(event) {  
+            function showEventDetails(event) {
                 var $eventContainer = $('#event-container');
                 $eventContainer.find('.event-name').html(event.name);
-                $eventContainer.find('.event-hero-count').html(event.heroes.length + ' heroes');
+                $eventContainer.find('.event-hero-count').html(event.heroes.length  + ' heroes');
                 $eventContainer.find('.event-timeslot-count').html(event.numberOfTimeslots + ' timeslots');
-
+                //utc date
                 var date = new Date(event.startUtc);
-                $eventContainer.find('.event-date').html(date.toDateString() + ' [Time] [Windows Abbreviated Timezone]');
+                let options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZone: 'America/Los_Angeles', timeZoneName: 'short'};
+
+                console.log('TIME ZONE ', new Intl.DateTimeFormat('en-US', options).format(date).replace(/,/g, ''));
+
+                $eventContainer.find('.event-date').html(new Intl.DateTimeFormat('en-US', options).format(date).replace(/,/g, ''));
+               // $eventContainer.find('.event-date').html(psdt.toDateString() + ' ' + psdt.toLocaleTimeString() + ' ' + zone );
             }
             function showEventHeroes(event) {
                 var options = {
                     people: event.heroes
                 };
-                var heroTable = $('#table-heroes').heroTable(options)
-                    .bind('herotable:deleted', function (e, hero) {
+
+                var heroTable = $('#table-heroes').heroTable(options).bind('herotable:deleted', function (e, hero) {
 
                     })
                     .bind('herotable:edit', function (e, hero) {
                         showHeroForm(hero);
-                    });
+                    }).validate(
+                        {
+                            rules: {
+                                Preferences: {
+                                    required: true,
+                                    min: 1
+                                }
+                            },
+                            messages: {
+                                name: {
+                                    required: "User did not select any preferences",
+                                    min: jQuery.validator.format("User did not select any preferences")
+                                }
+                            }
+                        });
+
+               
             }
             function showHeroForm(hero) {
                 $('#hero-form').modal({ backdrop: 'static' });
@@ -156,13 +220,106 @@
                     showEventMeetings(event);
                 });
             });
+            var count = 0;
+            $(document).on('click', '#addheroBtn', function () {
+                
+                if (count < 5) {
+                    Add();
 
+                }
+                count = count + 1;
+              
+            });
+            //$(document).on('click', '#submitBtn', function () {
+            //    alert('out');
+            //    //var x = document.getElementById("frmhro");
+            //    //var txt = "";
+            //    //var i;
+            //    //for (i = 0; i < x.length; i++) {
+            //    //    txt = txt + x.elements[i].value + "<br>";
+            //    //}
+            //    $('frmhro').serializeArray();
+            //    alert(txt);
+            //});
+            $('#frmhro').validate({
+
+                messages: {
+                    drpside: {
+                        required: "Please select an option from the list, you cannot select 'Choose...'",
+                    },
+                }
+            });
+            //jQuery.validator.setDefaults({
+            //    debug: true,
+            //    success: "valid"
+            //});
+            //$('#frmhro').validate({
+            //    rules: {
+            //        rnk: {
+            //            required: true,
+            //            range: [0, 5]
+            //        }
+            //    }
+            //});
             function createMeetings(callback) {
                 alert("Add code to create meetings based of a hero's preferences...");
                 // add code to create meetings
                 // trigger callback to populate meetings onto the form
                 // callback(updatedEvent);
             }
+
+            function Add() {
+                AddRow($("#heroid").val(), $("#rnk").val());
+                $("#heroid").val("");
+                $("#rnk").val("");
+            };
+
+           function AddRow(heroid, rank) {
+                //Get the reference of the Table's TBODY element.
+                var tBody = $("#tblPrefs > TBODY")[0];
+
+                //Add Row.
+                row = tBody.insertRow(-1);
+
+                //Add heroid cell.
+                var cell = $(row.insertCell(-1));
+                cell.html(heroid);
+
+                //Add rank cell.
+                cell = $(row.insertCell(-1));
+                cell.html(rank);
+
+                //Add Button cell.
+               cell = $(row.insertCell(-1));
+               var btnRemove = $('<input />', {
+                   type: 'button',
+                   value: 'Remove',
+                   on: {
+                       click: function () {
+                           Remove(this);
+                           //alert(this.value);
+                       }
+                   }
+               });
+               cell.append(btnRemove);
+            };
+
+            function Remove(button) {
+
+                //Determine the reference of the Row using the Button.
+                var row = $(button).closest("TR");
+
+                var name = $("TD", row).eq(0).html();
+                if (confirm("Do you want to delete: " + name)) {
+
+                    //Get the reference of the Table.
+                    var table = $("#tblPrefs")[0];
+
+                    //Delete the Table row using it's Index.
+                    table.deleteRow(row[0].rowIndex);
+                }
+            };
+
         });
     </script>
 }
